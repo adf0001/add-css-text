@@ -6,7 +6,7 @@ add css text
 npm install add-css-text
 ```
 
-# Usage
+# Usage & Api
 ```javascript
 
 var addCssText = require("add-css-text");
