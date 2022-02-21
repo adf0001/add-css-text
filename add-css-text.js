@@ -1,11 +1,18 @@
 ﻿
 // add-css-text @ npm, add css text.
 
-//if the element by `styleId` already exists, its cssText will be fully replaced.
-module.exports = function (cssText, styleId) {
+/*
+add_css_text(cssText [, styleId [, noReplaced]])
+
+if the element 'styleId' already exists,
+	its cssText will be fully replaced when 'noReplaced' is not true.
+*/
+module.exports = function (cssText, styleId, noReplaced) {
 	var style;
 	if (styleId && (style = document.getElementById(styleId))) {
 		if (style.tagName.toUpperCase() != "STYLE") return;	//fail
+
+		if (noReplaced) return false;	//untouched
 
 		style.textContent = cssText;
 	}
@@ -22,4 +29,5 @@ module.exports = function (cssText, styleId) {
 		}
 		document.getElementsByTagName("head")[0].appendChild(style);
 	}
+	return true;	//ok
 };
