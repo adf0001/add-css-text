@@ -12,10 +12,16 @@ module.exports = {
 		add_css_text('#divResult3 span.si{background:yellow;}', 'myStyle1');
 		document.getElementById('divResult3').innerHTML = '<span class=si>aaa</span> <span class=si>bbb</span>';
 
-		return "<span class='ht-cmd' onclick=\"document.getElementById('myStyle1').textContent='#divResult3 span.si{background:red;}'\">red</span> " +
-			"<span class='ht-cmd'  onclick=\"add_css_text('#divResult3 span.si{background:blue;}','myStyle1')\">blue</span>";
+		return "<span class='ht-cmd' onclick=\"add_css_text('#divResult3 span.si{background:red;}','myStyle1',true)\">red</span> " +
+			"<span class='ht-cmd' onclick=\"add_css_text('#divResult3 span.si{background:blue;}','myStyle1',true)\">blue</span>";
 	},
-	"noReplaced": function (done) {
+	"exist": function (done) {
+		add_css_text('#divResult3 span.si{background:yellow;}', 'myStyle1');
+		add_css_text('#divResult3 span.si{background:green;}', 'myStyle1');
+		document.getElementById('divResult3').innerHTML = '<span class=si>aaa</span> <span class=si>bbb</span>';
+		return "the existing color is unchanged";
+	},
+	"exist/replace": function (done) {
 		add_css_text('#divResult3 span.si{background:yellow;}', 'myStyle1');
 		add_css_text('#divResult3 span.si{background:green;}', 'myStyle1', true);
 		document.getElementById('divResult3').innerHTML = '<span class=si>aaa</span> <span class=si>bbb</span>';

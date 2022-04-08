@@ -12,10 +12,16 @@ npm install add-css-text
 var add_css_text = require("add-css-text");
 
 /*
-add_css_text(cssText [, styleId [, noReplaced]])
+add_css_text(cssText [, styleId [, replace]])
 
-if the element 'styleId' already exists,
-	its cssText will be fully replaced when 'noReplaced' is not true.
+if the 'styleId' is empty, or the element by 'styleId' is not exists,
+	return the new style element;
+
+if the element by 'styleId' already exists,
+	when the 'replace' is true, its cssText will be fully replaced and return true;
+	otherwise it's untouched and return false;
+
+if fail, return an Error object
 */
 add_css_text('#divResult3{height:200px}');
 assert( document.getElementById('divResult3').offsetHeight===200 );
